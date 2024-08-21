@@ -23,14 +23,14 @@ public class EventDAO { // buona prassi creare dei DAO per ogni tabella in modo 
         System.out.println("Evento " + event.getTitle() + " creato"); // stampo il titolo dell'evento in console per conferma
     }
 
-    public Event getById(UUID eventId) {
-        Event eventFound = em.find(Event.class, eventId); // metodo per cercare nel database tramite chiave primaria, inseriamo come primo parametro l'entità e come secondo parametro la chiave
+    public Event getById(String eventId) {
+        Event eventFound = em.find(Event.class, UUID.fromString(eventId)); // metodo per cercare nel database tramite chiave primaria, inseriamo come primo parametro l'entità e come secondo parametro la chiave
         if (eventFound == null)
             throw new NotFoundException(eventId); // se non trovo nessun evento con l'id passato al metodo lancio una exeption
         else return eventFound; //se lo trovo ritorno l'evento
     }
 
-    public void delete(UUID eventId) {
+    public void delete(String eventId) {
         Event eventFound = this.getById(eventId); // sfrutto il metodo getById() creato sopra
         EntityTransaction transaction = em.getTransaction(); // richiedo la transazione
         transaction.begin(); // avvio la transazione

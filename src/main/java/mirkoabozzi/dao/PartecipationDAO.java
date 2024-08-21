@@ -5,8 +5,6 @@ import jakarta.persistence.EntityTransaction;
 import mirkoabozzi.entities.Partecipation;
 import mirkoabozzi.exceptions.NotFoundException;
 
-import java.util.UUID;
-
 public class PartecipationDAO { // buona prassi creare dei DAO per ogni tabella in modo da tener libero e più leggibile il main
 
     private final EntityManager em;
@@ -23,14 +21,14 @@ public class PartecipationDAO { // buona prassi creare dei DAO per ogni tabella 
         System.out.println(" " + Partecipation.getEvent() + " creato"); // stampo il titolo dell'evento in console per conferma
     }
 
-    public Partecipation getById(UUID PartecipationId) {
+    public Partecipation getById(String PartecipationId) {
         Partecipation PartecipationFound = em.find(Partecipation.class, PartecipationId); // metodo per cercare nel database tramite chiave primaria, inseriamo come primo parametro l'entità e come secondo parametro la chiave
         if (PartecipationFound == null)
             throw new NotFoundException(PartecipationId); // se non trovo nessun evento con l'id passato al metodo lancio una exeption
         else return PartecipationFound; //se lo trovo ritorno l'evento
     }
 
-    public void delete(UUID PartecipationId) {
+    public void delete(String PartecipationId) {
         Partecipation PartecipationFound = this.getById(PartecipationId); // sfrutto il metodo getById() creato sopra
         EntityTransaction transaction = em.getTransaction(); // richiedo la transazione
         transaction.begin(); // avvio la transazione

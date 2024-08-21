@@ -23,8 +23,8 @@ public class LocationDAO { // buona prassi creare dei DAO per ogni tabella in mo
         System.out.println(" " + location.getName() + " creato"); // stampo il titolo dell'evento in console per conferma
     }
 
-    public Location getById(UUID locationId) {
-        Location locationFound = em.find(Location.class, locationId); // metodo per cercare nel database tramite chiave primaria, inseriamo come primo parametro l'entità e come secondo parametro la chiave
+    public Location getById(String locationId) {
+        Location locationFound = em.find(Location.class, UUID.fromString(locationId)); // metodo per cercare nel database tramite chiave primaria, inseriamo come primo parametro l'entità e come secondo parametro la chiave
         if (locationFound == null)
             throw new NotFoundException(locationId); // se non trovo nessun evento con l'id passato al metodo lancio una exeption
         else return locationFound; //se lo trovo ritorno l'evento
