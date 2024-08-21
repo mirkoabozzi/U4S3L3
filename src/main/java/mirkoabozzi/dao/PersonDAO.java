@@ -24,7 +24,7 @@ public class PersonDAO { // buona prassi creare dei DAO per ogni tabella in modo
     }
 
     public Person getById(UUID personId) {
-        Person personFound = em.find(Person.class, personId); // metodo per cercare nel database tramite chiave primaria, inseriamo come primo parametro l'entità e come secondo parametro la chiave
+        Person personFound = em.find(Person.class, UUID.fromString(personId)); // metodo per cercare nel database tramite chiave primaria, inseriamo come primo parametro l'entità e come secondo parametro la chiave
         if (personFound == null)
             throw new NotFoundException(personId); // se non trovo nessun evento con l'id passato al metodo lancio una exeption
         else return personFound; //se lo trovo ritorno l'evento
