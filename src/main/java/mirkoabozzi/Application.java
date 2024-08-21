@@ -5,7 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import mirkoabozzi.dao.EventDAO;
 import mirkoabozzi.entities.Event;
-import mirkoabozzi.entities.EventType;
+import mirkoabozzi.enums.EventType;
 import mirkoabozzi.exceptions.NotFoundException;
 
 import java.time.LocalDate;

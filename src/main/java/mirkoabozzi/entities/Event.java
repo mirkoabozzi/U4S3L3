@@ -1,6 +1,7 @@
 package mirkoabozzi.entities;
 
 import jakarta.persistence.*;
+import mirkoabozzi.enums.EventType;
 
 import java.time.LocalDate;
 
