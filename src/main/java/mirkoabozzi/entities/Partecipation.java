@@ -1,6 +1,7 @@
 package mirkoabozzi.entities;
 
 import jakarta.persistence.*;
+import mirkoabozzi.enums.StateType;
 
 import java.util.UUID;
 
@@ -19,18 +20,22 @@ public class Partecipation {
     @JoinColumn(name = "event_id", nullable = false)
     private Event event;
 
+    private StateType stateType;
+
     public Partecipation() {
     }
 
-    public Partecipation(Person person, Event event) {
+    public Partecipation(Person person, Event event, StateType stateType) {
         this.person = person;
         this.event = event;
+        this.stateType = stateType;
     }
 
     public UUID getId() {
         return id;
     }
 
+   
     public Person getPerson() {
         return person;
     }
@@ -47,12 +52,11 @@ public class Partecipation {
         this.event = event;
     }
 
-    @Override
-    public String toString() {
-        return "Partecipation{" +
-                "id=" + id +
-                ", person=" + person +
-                ", event=" + event +
-                '}';
+    public StateType getStateType() {
+        return stateType;
+    }
+
+    public void setStateType(StateType stateType) {
+        this.stateType = stateType;
     }
 }
