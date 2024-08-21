@@ -27,26 +27,32 @@ public class Event {
     @Enumerated(EnumType.STRING)
     private EventType eventType;
 
-    @Column(name = "max_people")
+    @Column(name = "max_people", nullable = false)
     private int maxPeople;
 
     @OneToMany(mappedBy = "event")
     private List<Partecipation> partecipationList;
 
     @ManyToOne()
-    @JoinColumn(name = "location_id")
+    @JoinColumn(name = "location_id", nullable = false)
     private Location location;
 
     public Event() {
     }
 
-    public Event(String title, LocalDate eventData, String description, EventType eventType, int maxPeople) {
+    public Event(String title, LocalDate eventData, String description, EventType eventType, int maxPeople, Location location) {
         this.title = title;
         this.eventData = eventData;
         this.description = description;
         this.eventType = eventType;
         this.maxPeople = maxPeople;
+        this.location = location;
     }
+
+    public UUID getId() {
+        return id;
+    }
+
 
     public String getTitle() {
         return title;
@@ -86,6 +92,22 @@ public class Event {
 
     public void setMaxPeople(int maxPeople) {
         this.maxPeople = maxPeople;
+    }
+
+    public List<Partecipation> getPartecipationList() {
+        return partecipationList;
+    }
+
+    public void setPartecipationList(List<Partecipation> partecipationList) {
+        this.partecipationList = partecipationList;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     @Override

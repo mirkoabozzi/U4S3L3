@@ -12,14 +12,17 @@ public class Location {
     @GeneratedValue
     private UUID id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "city")
+    @Column(name = "city", nullable = false)
     private String city;
 
     @OneToMany(mappedBy = "location")
     private List<Event> eventList;
+
+    public Location() {
+    }
 
     public Location(String name, String city, List<Event> eventList) {
         this.name = name;
