@@ -16,8 +16,11 @@ public class Partecipation {
     private Person person;
 
     @ManyToOne()
-    @JoinColumn(name = "event_id")
+    @JoinColumn(name = "event_id", nullable = false)
     private Event event;
+
+    public Partecipation() {
+    }
 
     public Partecipation(Person person, Event event) {
         this.person = person;

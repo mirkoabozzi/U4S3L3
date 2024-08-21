@@ -33,6 +33,10 @@ public class Event {
     @OneToMany(mappedBy = "event")
     private List<Partecipation> partecipationList;
 
+    @ManyToOne()
+    @JoinColumn(name = "location_id")
+    private Location location;
+
     public Event() {
     }
 
