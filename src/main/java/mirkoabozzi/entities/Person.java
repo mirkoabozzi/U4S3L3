@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import mirkoabozzi.enums.GenderType;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -29,6 +30,8 @@ public class Person {
     @Enumerated(EnumType.STRING)
     private GenderType genderType;
 
+    @OneToMany(mappedBy = "person")
+    private List<Partecipation> partecipationList;
 
     public Person() {
     }
@@ -85,6 +88,14 @@ public class Person {
         this.genderType = genderType;
     }
 
+    public List<Partecipation> getPartecipationList() {
+        return partecipationList;
+    }
+
+    public void setPartecipationList(List<Partecipation> partecipationList) {
+        this.partecipationList = partecipationList;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -94,6 +105,7 @@ public class Person {
                 ", email='" + email + '\'' +
                 ", date=" + date +
                 ", genderType=" + genderType +
+                ", partecipationList=" + partecipationList +
                 '}';
     }
 }

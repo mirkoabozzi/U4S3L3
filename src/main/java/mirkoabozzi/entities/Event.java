@@ -4,13 +4,15 @@ import jakarta.persistence.*;
 import mirkoabozzi.enums.EventType;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "events")
 public class Event {
     @Id
     @GeneratedValue
-    private long id;
+    private UUID id;
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -27,6 +29,9 @@ public class Event {
 
     @Column(name = "max_people")
     private int maxPeople;
+
+    @OneToMany(mappedBy = "event")
+    private List<Partecipation> partecipationList;
 
     public Event() {
     }

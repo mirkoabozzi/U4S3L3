@@ -6,7 +6,6 @@ import jakarta.persistence.Persistence;
 import mirkoabozzi.dao.EventDAO;
 import mirkoabozzi.entities.Event;
 import mirkoabozzi.enums.EventType;
-import mirkoabozzi.exceptions.NotFoundException;
 
 import java.time.LocalDate;
 
@@ -31,18 +30,18 @@ public class Application {
 //        ed.save(piscina);
 //        ed.save(tracking);
 
-        try {
-            Event event = ed.getById(152);
-            System.out.println(event);
-        } catch (NotFoundException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        try {
-            ed.delete(54);
-        } catch (NotFoundException ex) {
-            System.out.println(ex.getMessage());
-        }
+//        try {
+//            Event event = ed.getById(152);
+//            System.out.println(event);
+//        } catch (NotFoundException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//
+//        try {
+//            ed.delete(54);
+//        } catch (NotFoundException ex) {
+//            System.out.println(ex.getMessage());
+//        }
 
         em.close();
         emf.close();

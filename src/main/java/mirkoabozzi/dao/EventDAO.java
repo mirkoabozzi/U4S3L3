@@ -5,6 +5,8 @@ import jakarta.persistence.EntityTransaction;
 import mirkoabozzi.entities.Event;
 import mirkoabozzi.exceptions.NotFoundException;
 
+import java.util.UUID;
+
 public class EventDAO { // buona prassi creare dei DAO per ogni tabella in modo da tener libero e più leggibile il main
 
     private final EntityManager em;
@@ -21,14 +23,14 @@ public class EventDAO { // buona prassi creare dei DAO per ogni tabella in modo 
         System.out.println("Evento " + event.getTitle() + " creato"); // stampo il titolo dell'evento in console per conferma
     }
 
-    public Event getById(long eventId) {
+    public Event getById(UUID eventId) {
         Event eventFound = em.find(Event.class, eventId); // metodo per cercare nel database tramite chiave primaria, inseriamo come primo parametro l'entità e come secondo parametro la chiave
         if (eventFound == null)
             throw new NotFoundException(eventId); // se non trovo nessun evento con l'id passato al metodo lancio una exeption
         else return eventFound; //se lo trovo ritorno l'evento
     }
 
-    public void delete(long eventId) {
+    public void delete(UUID eventId) {
         Event eventFound = this.getById(eventId); // sfrutto il metodo getById() creato sopra
         EntityTransaction transaction = em.getTransaction(); // richiedo la transazione
         transaction.begin(); // avvio la transazione
