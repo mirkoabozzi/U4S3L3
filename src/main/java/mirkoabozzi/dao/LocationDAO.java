@@ -30,7 +30,7 @@ public class LocationDAO { // buona prassi creare dei DAO per ogni tabella in mo
         else return locationFound; //se lo trovo ritorno l'evento
     }
 
-    public void delete(UUID locationId) {
+    public void delete(String locationId) {
         Location locationFound = this.getById(locationId); // sfrutto il metodo getById() creato sopra
         EntityTransaction transaction = em.getTransaction(); // richiedo la transazione
         transaction.begin(); // avvio la transazione
