@@ -20,6 +20,8 @@ public class Partecipation {
     @JoinColumn(name = "event_id", nullable = false)
     private Event event;
 
+    @Column(name = "state")
+    @Enumerated(EnumType.STRING)
     private StateType stateType;
 
     public Partecipation() {
@@ -35,7 +37,7 @@ public class Partecipation {
         return id;
     }
 
-   
+
     public Person getPerson() {
         return person;
     }
@@ -58,5 +60,15 @@ public class Partecipation {
 
     public void setStateType(StateType stateType) {
         this.stateType = stateType;
+    }
+
+    @Override
+    public String toString() {
+        return "Partecipation{" +
+                "id=" + id +
+//                ", person=" + person +
+                ", event=" + event +
+                ", stateType=" + stateType +
+                '}';
     }
 }

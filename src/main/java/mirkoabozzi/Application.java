@@ -9,11 +9,9 @@ import mirkoabozzi.dao.PartecipationDAO;
 import mirkoabozzi.dao.PersonDAO;
 import mirkoabozzi.entities.Event;
 import mirkoabozzi.entities.Location;
-import mirkoabozzi.entities.Partecipation;
 import mirkoabozzi.entities.Person;
 import mirkoabozzi.enums.EventType;
 import mirkoabozzi.enums.GenderType;
-import mirkoabozzi.enums.StateType;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -80,9 +78,12 @@ public class Application {
         Person mirkoFromDb = pd.getById("81112228-525f-41c6-a9af-421964d301f0");
         Event eventFromDb = ed.getById("9377af08-d3eb-498a-8906-b0b94c021b02");
 
-        Partecipation part1 = new Partecipation(mirkoFromDb, eventFromDb, StateType.CONFERMATA);
+//        Partecipation part1 = new Partecipation(mirkoFromDb, eventFromDb, StateType.CONFERMATA);
+//
+//        ptd.save(part1);
 
-        ptd.save(part1);
+
+        mirkoFromDb.getPartecipationList().forEach(System.out::println);
 
 //        try {
 //            Event event = ed.getById(152);
